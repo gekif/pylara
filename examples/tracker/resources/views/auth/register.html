@@ -1,0 +1,15 @@
+{% extends "layouts.app" %}
+{% block content %}
+<h1>Register</h1>
+<form method="POST" action="/register">
+  {!! csrf_field !!}
+  <input name="name" value="{{ old.name }}" placeholder="Name">
+  {% for message in errors.name %}<p class="error">{{ message }}</p>{% endfor %}
+  <input name="email" value="{{ old.email }}" placeholder="Email">
+  {% for message in errors.email %}<p class="error">{{ message }}</p>{% endfor %}
+  <input name="password" type="password" placeholder="Password">
+  <input name="password_confirmation" type="password" placeholder="Repeat password">
+  {% for message in errors.password %}<p class="error">{{ message }}</p>{% endfor %}
+  <button>Create account</button>
+</form>
+{% endblock %}

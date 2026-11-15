@@ -1,0 +1,10 @@
+from pylara.middleware.session import SessionMiddleware, VerifyCsrfToken
+
+from app.controllers.welcome_controller import WelcomeController
+
+
+def register(app):
+    # Browser pages use sessions and CSRF protection. API routes (routes/api.py) do not.
+    app.group({"middleware": [SessionMiddleware, VerifyCsrfToken]}, lambda r: [
+        r.get("/", [WelcomeController, "index"]).named("home"),
+    ])

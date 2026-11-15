@@ -1,0 +1,28 @@
+{% extends "layouts.app" %}
+{% block title %}My tasks{% endblock %}
+{% block content %}
+<h1>{{ user.name }}'s tasks</h1>
+<form method="POST" action="/logout">{!! csrf_field !!}<button>Log out</button></form>
+<form method="POST" action="/tasks" enctype="multipart/form-data">
+  {!! csrf_field !!}
+  <input name="title" value="{{ old.title }}" placeholder="New task">
+  <input type="file" name="attachment">
+  {% for message in errors.title %}<p class="error">{{ message }}</p>{% endfor %}
+  {% for message in errors.attachment %}<p class="error">{{ message }}</p>{% endfor %}
+  <button>Add</button>
+</form>
+<ul>
+{% for task in tasks %}
+  <li>
+    <form method="POST" action="/tasks/{{ task.id }}/toggle" style="display:inline">{!! csrf_field !!}
+      <button>{% if task.done %}[x]{% else %}[ ]{% endif %}</button></form>
+    {{ task.title }}
+    {% if task.attachment %}<small>(file: {{ task.attachment }})</small>{% endif %}
+    <form method="POST" action="/tasks/{{ task.id }}" style="display:inline">{!! csrf_field !!}
+      <input type="hidden" name="_method" value="DELETE"><button>Delete</button></form>
+  </li>
+{% else %}
+  <li>No tasks yet.</li>
+{% endfor %}
+</ul>
+{% endblock %}

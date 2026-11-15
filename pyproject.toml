@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pylara"
+dynamic = ["version"]            # read from pylara/version.py (single source of truth)
+description = "A Laravel-inspired web framework for Python: routing, Eloquent-style ORM, middleware, migrations and an Artisan-style CLI."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Dzulfikar Maulana", email = "dzulfikar.maulana@gmail.com" }]
+keywords = ["laravel", "framework", "web", "wsgi", "orm", "mvc", "artisan"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+dependencies = []                # standard library only
+
+[project.urls]
+Homepage = "https://github.com/gekif/pylara"
+Documentation = "https://github.com/gekif/pylara/tree/main/docs"
+Source = "https://github.com/gekif/pylara"
+Issues = "https://github.com/gekif/pylara/issues"
+
+[project.scripts]
+pylara = "pylara.cli:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "pylara.version.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["pylara*"]
+
+[tool.setuptools]
+include-package-data = true

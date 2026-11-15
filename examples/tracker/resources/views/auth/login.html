@@ -1,0 +1,11 @@
+{% extends "layouts.app" %}
+{% block content %}
+<h1>Log in</h1>
+<form method="POST" action="/login">
+  {!! csrf_field !!}
+  <input name="email" value="{{ old.email }}" placeholder="Email">
+  {% for message in errors.email %}<p class="error">{{ message }}</p>{% endfor %}
+  <input name="password" type="password" placeholder="Password">
+  <button>Log in</button>
+</form>
+{% endblock %}

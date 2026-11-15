@@ -1,0 +1,6 @@
+include LICENSE README.md
+recursive-include pylara/stubs *
+recursive-include docs *.md
+graft tests
+graft examples
+global-exclude __pycache__ *.py[cod] *.sqlite

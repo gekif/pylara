@@ -1,0 +1,11 @@
+{% extends "layouts.app" %}
+
+{% block content %}
+  <h1>{{ app_name }}</h1>
+  <p class="muted">Running on PyLara {{ version }} &middot; visits in this session: {{ visits }}</p>
+  <ol>
+    <li>Edit <code>routes/web.py</code> to add pages.</li>
+    <li>Create controllers with <code>python -m manage make:controller</code>.</li>
+    <li>Create models and migrations with <code>python -m manage make:model Post -m</code>.</li>
+  </ol>
+{% endblock %}

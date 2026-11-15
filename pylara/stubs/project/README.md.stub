@@ -1,0 +1,42 @@
+# __PROJECT_TITLE__
+
+A [PyLara](https://pypi.org/project/pylara/) application.
+
+## Getting started
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate            # Windows   (Linux/macOS: source .venv/bin/activate)
+python -m pip install -r requirements.txt
+python -m manage migrate
+python -m manage serve
+```
+
+Open http://127.0.0.1:8000.
+
+## Everyday commands
+
+```bash
+python -m manage route:list                  # list routes
+python -m manage make:controller PostController --resource
+python -m manage make:model Post -m          # model + migration
+python -m manage migrate                     # run migrations
+python -m manage migrate:rollback            # undo the last batch
+python -m unittest discover -v               # run the tests
+```
+
+## Layout
+
+| Path | Purpose |
+|---|---|
+| `app/controllers`, `app/models`, `app/middleware`, `app/providers` | Application code |
+| `bootstrap/app.py` | Builds the application (database, providers, routes) |
+| `routes/web.py`, `routes/api.py` | Route definitions |
+| `resources/views` | HTML templates |
+| `public` | Static files served at `/` (e.g. `public/css/app.css` -> `/css/app.css`) |
+| `database/migrations` | Schema migrations |
+| `config` | JSON configuration (`app.config.get("app.name")`) |
+| `storage` | SQLite database and other runtime files |
+| `.env` | Environment settings (never commit this file) |
+
+Full documentation: see the PyLara docs.
